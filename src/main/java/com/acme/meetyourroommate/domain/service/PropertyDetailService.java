@@ -12,5 +12,5 @@ public interface PropertyDetailService {
 
     PropertyDetail createPropertyDetail(Long propertyId,PropertyDetail propertyDetail);
     PropertyDetail updatePropertyDetail(Long propertyDetailId, PropertyDetail propertyDetailRequest);
-    ResponseEntity<?> deleteProperty(Long propertyDetailId);
+    ResponseEntity<?> deletePropertyDetail(Long propertyDetailId);
 }

@@ -55,7 +55,7 @@ public class PropertyDetailServiceImpl implements PropertyDetailService {
     }
 
     @Override
-    public ResponseEntity<?> deleteProperty(Long propertyDetailId) {
+    public ResponseEntity<?> deletePropertyDetail(Long propertyDetailId) {
         PropertyDetail propertyDetail = propertyDetailRepository.findById(propertyDetailId)
                 .orElseThrow(()->new ResourceNotFoundException("Property Detail","Id",propertyDetailId));
         propertyDetailRepository.delete(propertyDetail);

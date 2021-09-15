@@ -16,13 +16,13 @@ public class PropertyDetail extends AuditModel{
     private Long id;
 
     @NotNull
-    private int rooms;
+    private Integer rooms;
 
     @NotNull
-    private int squareMeters;
+    private Integer squareMeters;
 
     @NotNull
-    private float price;
+    private Float price;
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "property_id", nullable = false)
@@ -33,31 +33,31 @@ public class PropertyDetail extends AuditModel{
         return id;
     }
 
-    public void setId(Long idPropertyDetails) {
-        this.id = idPropertyDetails;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public int getRooms() {
+    public Integer getRooms() {
         return rooms;
     }
 
-    public void setRooms(int rooms) {
+    public void setRooms(Integer rooms) {
         this.rooms = rooms;
     }
 
-    public int getSquareMeters() {
+    public Integer getSquareMeters() {
         return squareMeters;
     }
 
-    public void setSquareMeters(int squareMeters) {
+    public void setSquareMeters(Integer squareMeters) {
         this.squareMeters = squareMeters;
     }
 
-    public float getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 

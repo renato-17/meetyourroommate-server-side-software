@@ -13,5 +13,5 @@ public interface AdService {
 
     Ad createAd(Long propertyId,Ad ad);
     Ad updateAd(Long adId, Ad adRequest);
-    ResponseEntity<?> deleteProperty(Long adId);
+    ResponseEntity<?> deleteAd(Long adId);
 }

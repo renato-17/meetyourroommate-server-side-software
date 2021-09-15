@@ -18,10 +18,10 @@ public class Ad extends AuditModel {
     private String title;
 
     @NotNull
-    private int viewsNumber;
+    private Integer viewsNumber;
 
     @NotNull
-    private int likesNumber;
+    private Integer likesNumber;
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "property_id", nullable = false)
@@ -32,44 +32,39 @@ public class Ad extends AuditModel {
         return id;
     }
 
-    public Ad setId(Long id) {
+    public void setId(Long id) {
         this.id = id;
-        return this;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public Ad setTitle(String title) {
+    public void setTitle(String title) {
         this.title = title;
-        return this;
     }
 
-    public int getViewsNumber() {
+    public Integer getViewsNumber() {
         return viewsNumber;
     }
 
-    public Ad setViewsNumber(int viewsNumber) {
+    public void setViewsNumber(Integer viewsNumber) {
         this.viewsNumber = viewsNumber;
-        return this;
     }
 
-    public int getLikesNumber() {
+    public Integer getLikesNumber() {
         return likesNumber;
     }
 
-    public Ad setLikesNumber(int likesNumber) {
+    public void setLikesNumber(Integer likesNumber) {
         this.likesNumber = likesNumber;
-        return this;
     }
 
     public Property getProperty() {
         return property;
     }
 
-    public Ad setProperty(Property property) {
+    public void setProperty(Property property) {
         this.property = property;
-        return this;
     }
 }

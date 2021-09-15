@@ -44,6 +44,7 @@ public class TaskServiceImpl implements TaskService {
     public Task createTask(Long teamId, Task task) {
         return teamRepository.findById(teamId).map(team ->{
             task.setTeam(team);
+            task.setActive(false);
             return taskRepository.save(task);
         }).orElseThrow(()->new ResourceNotFoundException("Team","Id",teamId));
     }

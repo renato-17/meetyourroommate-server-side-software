@@ -46,6 +46,8 @@ public class AdServiceImpl implements AdService {
     public Ad createAd(Long propertyId, Ad ad) {
         return propertyRepository.findById(propertyId).map(property -> {
             ad.setProperty(property);
+            ad.setViewsNumber(0);
+            ad.setLikesNumber(0);
             return adRepository.save(ad);
         }).orElseThrow(()->new ResourceNotFoundException("Property","Id",propertyId));
     }
@@ -61,7 +63,7 @@ public class AdServiceImpl implements AdService {
     }
 
     @Override
-    public ResponseEntity<?> deleteProperty(Long adId) {
+    public ResponseEntity<?> deleteAd(Long adId) {
         Ad ad = adRepository.findById(adId)
                 .orElseThrow(()->new ResourceNotFoundException("Ad","Id",adId));
         adRepository.delete(ad);

@@ -7,7 +7,7 @@ import java.util.Date;
 
 @Entity
 @Table(name= "property_resources")
-public class Resource extends AuditModel{
+public class PropertyResource extends AuditModel{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
