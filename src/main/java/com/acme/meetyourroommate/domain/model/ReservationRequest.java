@@ -10,12 +10,12 @@ import javax.validation.constraints.NotNull;
 @Table(name = "reservation_requests")
 public class ReservationRequest {
     @Id
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "team_id", nullable = false)
     private Team team;
 
     @Id
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "lessor_id", nullable = false)
     private Lessor lessor;
 

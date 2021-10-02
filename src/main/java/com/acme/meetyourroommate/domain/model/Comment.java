@@ -19,7 +19,6 @@ public class Comment extends AuditModel {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "ad_id", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
     private Ad ad;
 
     public Long getId() {

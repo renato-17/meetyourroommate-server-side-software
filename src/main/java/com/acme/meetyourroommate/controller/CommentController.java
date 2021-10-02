@@ -45,10 +45,10 @@ public class CommentController {
     }
 
     @Operation(summary = "Create Comment", description = "Create a new Comment", tags = {"comments"})
-    @PostMapping("/comments")
-    public CommentResource createComment(@Valid @RequestBody SaveCommentResource resource){
+    @PostMapping("ads/{adId}/comments")
+    public CommentResource createComment(@Valid @RequestBody SaveCommentResource resource,@PathVariable Long adId){
         Comment comment = convertToEntity(resource);
-        return convertToResource(commentService.createComment(resource.getAdId(),comment));
+        return convertToResource(commentService.createComment(adId,comment));
     }
 
     @Operation(summary = "Update Comment", description = "Update Comment", tags = {"comments"})

@@ -8,12 +8,12 @@ import javax.validation.constraints.NotNull;
 @Table(name = "requests")
 public class FriendRequest {
     @Id
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "student_send", nullable = false)
     private Student studentSend;
 
     @Id
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "student_received", nullable = false)
     private Student studentReceived;
 

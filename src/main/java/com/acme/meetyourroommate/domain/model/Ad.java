@@ -5,6 +5,7 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 @Table(name = "ads")
@@ -23,10 +24,12 @@ public class Ad extends AuditModel {
     @NotNull
     private Integer likesNumber;
 
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL,optional = false)
     @JoinColumn(name = "property_id", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
     private Property property;
+
+    @OneToMany(mappedBy = "ad", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Comment> comments;
 
     public Long getId() {
         return id;
@@ -66,5 +69,13 @@ public class Ad extends AuditModel {
 
     public void setProperty(Property property) {
         this.property = property;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }

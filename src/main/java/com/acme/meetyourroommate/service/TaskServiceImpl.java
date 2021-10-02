@@ -1,6 +1,8 @@
 package com.acme.meetyourroommate.service;
 
 import com.acme.meetyourroommate.domain.model.Task;
+import com.acme.meetyourroommate.domain.model.Team;
+import com.acme.meetyourroommate.domain.repository.CampusRepository;
 import com.acme.meetyourroommate.domain.repository.TaskRepository;
 import com.acme.meetyourroommate.domain.repository.TeamRepository;
 import com.acme.meetyourroommate.domain.service.TaskService;
@@ -42,11 +44,12 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public Task createTask(Long teamId, Task task) {
-        return teamRepository.findById(teamId).map(team ->{
-            task.setTeam(team);
-            task.setActive(false);
-            return taskRepository.save(task);
-        }).orElseThrow(()->new ResourceNotFoundException("Team","Id",teamId));
+        Team team = teamRepository.findById(teamId)
+                .orElseThrow(()->new ResourceNotFoundException("Team","Id",teamId));
+
+        task.setTeam(team);
+        task.setActive(false);
+        return taskRepository.save(task);
     }
 
     @Override

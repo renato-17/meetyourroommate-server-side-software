@@ -9,13 +9,11 @@ public class SaveCampusResource {
     @NotBlank
     @Size(max = 100)
     private String name;
+
     @NotNull
     @NotBlank
     @Size(max = 100)
     private String address;
-
-    @NotNull
-    private Long studyCenterId;
 
     public String getName() {
         return name;
@@ -33,11 +31,4 @@ public class SaveCampusResource {
         this.address = address;
     }
 
-    public Long getStudyCenterId() {
-        return studyCenterId;
-    }
-
-    public void setStudyCenterId(Long studyCenterId) {
-        this.studyCenterId = studyCenterId;
-    }
 }

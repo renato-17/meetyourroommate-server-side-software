@@ -10,9 +10,6 @@ public class SaveCommentResource {
     @Size(max = 200)
     private String text;
 
-    @NotNull
-    private Long adId;
-
     public String getText() {
         return text;
     }
@@ -21,11 +18,4 @@ public class SaveCommentResource {
         this.text = text;
     }
 
-    public Long getAdId() {
-        return adId;
-    }
-
-    public void setAdId(Long adId) {
-        this.adId = adId;
-    }
 }

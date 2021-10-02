@@ -7,22 +7,11 @@ public class SaveTaskResource {
     @NotNull
     @NotBlank
     private String description;
-    @NotNull
-    private Long teamId;
-
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Long getTeamId() {
-        return teamId;
-    }
-
-    public void setTeamId(Long teamId) {
-        this.teamId = teamId;
     }
 }

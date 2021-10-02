@@ -44,11 +44,17 @@ public class PropertyResourceServiceImpl implements PropertyResourceService {
 
     @Override
     public PropertyResource updatePropertyResource(Long resourceId, PropertyResource propertyResourceRequest) {
-        return null;
+        PropertyResource propertyResource = propertyResourceRepository.findById(resourceId)
+                .orElseThrow(()->new ResourceNotFoundException("Resource","Id",resourceId));
+        propertyResource.setLink(propertyResourceRequest.getLink());
+        return propertyResourceRepository.save(propertyResource);
     }
 
     @Override
     public ResponseEntity<?> deletePropertyResource(Long resourceId) {
-        return null;
+        PropertyResource propertyResource = propertyResourceRepository.findById(resourceId)
+                .orElseThrow(()->new ResourceNotFoundException("Resource","Id",resourceId));
+        propertyResourceRepository.delete(propertyResource);
+        return ResponseEntity.ok().build();
     }
 }

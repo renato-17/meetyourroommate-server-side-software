@@ -9,8 +9,7 @@ public class SavePropertyDetailResource {
     private Integer squareMeters;
     @NotNull
     private Float price;
-    @NotNull
-    private Long propertyId;
+
 
     public Integer getRooms() {
         return rooms;
@@ -36,11 +35,4 @@ public class SavePropertyDetailResource {
         this.price = price;
     }
 
-    public Long getPropertyId() {
-        return propertyId;
-    }
-
-    public void setPropertyId(Long propertyId) {
-        this.propertyId = propertyId;
-    }
 }

@@ -8,9 +8,6 @@ public class SavePropertyResourceResource {
     @NotBlank
     private String link;
 
-    @NotNull
-    private Long propertyDetailId;
-
     public String getLink() {
         return link;
     }
@@ -19,11 +16,4 @@ public class SavePropertyResourceResource {
         this.link = link;
     }
 
-    public Long getPropertyDetailId() {
-        return propertyDetailId;
-    }
-
-    public void setPropertyDetailId(Long propertyDetailId) {
-        this.propertyDetailId = propertyDetailId;
-    }
 }

@@ -15,9 +15,6 @@ public class SavePropertyResource {
     @Size(max = 300)
     private String description;
 
-    @NotNull
-    private Long lessorId;
-
     public String getAddress() {
         return address;
     }
@@ -34,11 +31,4 @@ public class SavePropertyResource {
         this.description = description;
     }
 
-    public Long getLessorId() {
-        return lessorId;
-    }
-
-    public void setLessorId(Long lessorId) {
-        this.lessorId = lessorId;
-    }
 }

@@ -46,10 +46,11 @@ public class TaskController {
     }
 
     @Operation(summary = "Create Task", description = "Create a new Task", tags = {"tasks"})
-    @PostMapping("/tasks")
-    public TaskResource createTask(@Valid @RequestBody SaveTaskResource resource){
+    @PostMapping("/teams/{teamId}/tasks")
+    public TaskResource createTask(@Valid @RequestBody SaveTaskResource resource,
+                                   @PathVariable Long teamId){
         Task task = convertToEntity(resource);
-        return convertToResource(taskService.createTask(resource.getTeamId(),task));
+        return convertToResource(taskService.createTask(teamId,task));
     }
 
     @Operation(summary = "Update Task", description = "Update Task", tags = {"tasks"})

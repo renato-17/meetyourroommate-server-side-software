@@ -5,6 +5,7 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 @Table(name = "property_details")
@@ -24,10 +25,12 @@ public class PropertyDetail extends AuditModel{
     @NotNull
     private Float price;
 
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL,optional = false)
     @JoinColumn(name = "property_id", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
     private Property property;
+
+    @OneToMany(mappedBy = "propertyDetail", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<PropertyResource> propertyResources;
 
     public Long getId() {
         return id;
@@ -67,5 +70,13 @@ public class PropertyDetail extends AuditModel{
 
     public void setProperty(Property property) {
         this.property = property;
+    }
+
+    public List<PropertyResource> getPropertyResources() {
+        return propertyResources;
+    }
+
+    public void setPropertyResources(List<PropertyResource> propertyResources) {
+        this.propertyResources = propertyResources;
     }
 }

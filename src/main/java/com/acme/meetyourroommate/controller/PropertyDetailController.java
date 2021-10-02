@@ -45,10 +45,10 @@ public class PropertyDetailController {
     }
 
     @Operation(summary = "Create PropertyDetail", description = "Create a new PropertyDetail", tags = {"property details"})
-    @PostMapping("/property-details")
-    public PropertyDetailResource createPropertyDetail(@Valid @RequestBody SavePropertyDetailResource resource){
+    @PostMapping("properties/{propertyId}/property-details")
+    public PropertyDetailResource createPropertyDetail(@Valid @RequestBody SavePropertyDetailResource resource, @PathVariable Long propertyId){
         PropertyDetail propertyDetail = convertToEntity(resource);
-        return convertToResource(propertyDetailService.createPropertyDetail(resource.getPropertyId(),propertyDetail));
+        return convertToResource(propertyDetailService.createPropertyDetail(propertyId,propertyDetail));
     }
 
     @Operation(summary = "Update PropertyDetail", description = "Update PropertyDetail", tags = {"property details"})
