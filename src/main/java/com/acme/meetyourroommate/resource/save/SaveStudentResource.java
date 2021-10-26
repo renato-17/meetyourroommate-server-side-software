@@ -67,17 +67,6 @@ public class SaveStudentResource {
     @Size(max = 50)
     private String password;
 
-    @NotNull
-    private Long campusId;
-
-    public Long getCampusId() {
-        return campusId;
-    }
-
-    public void setCampusId(Long campusId) {
-        this.campusId = campusId;
-    }
-
     public String getFirstName() {
         return firstName;
     }

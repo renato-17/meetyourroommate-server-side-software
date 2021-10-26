@@ -45,13 +45,6 @@ public class StudentController {
         return convertToResource(studentService.getStudentById(studentId));
     }
 
-    @Operation(summary = "Create Student", description = "Create a new Student", tags = {"students"})
-    @PostMapping("/students")
-    public StudentResource createStudent(@Valid @RequestBody SaveStudentResource resource){
-        Student student = convertToEntity(resource);
-        return convertToResource(studentService.createStudent(resource.getCampusId(),student));
-    }
-
     @Operation(summary = "Update Student", description = "Update Student", tags = {"students"})
     @PutMapping("/students/{studentId}")
     public StudentResource updateStudent(
