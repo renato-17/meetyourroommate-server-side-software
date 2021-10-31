@@ -28,6 +28,15 @@ public class MeetYourRoommateApplication {
         return new ModelMapper();
     }
 
+    @Configuration
+    @EnableWebSecurity
+    public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+        @Override
+        protected void configure(HttpSecurity security) throws Exception
+        {
+            security.httpBasic().disable();
+        }
+    }
 //    @EnableWebSecurity
 //    @Configuration
 //    class WebSecurityConfig extends WebSecurityConfigurerAdapter {
