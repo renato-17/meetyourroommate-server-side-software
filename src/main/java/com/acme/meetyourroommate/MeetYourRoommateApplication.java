@@ -32,17 +32,10 @@ public class MeetYourRoommateApplication {
     @EnableWebSecurity
     public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         @Override
-        protected void configure(HttpSecurity security) throws Exception
+        protected void configure(HttpSecurity http) throws Exception
         {
-            security.httpBasic().disable();
-        }
-    }
-//    @EnableWebSecurity
-//    @Configuration
-//    class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-//        @Override
-//        protected void configure(HttpSecurity http) throws Exception {
-//            http.cors().and()
+            http.cors();
+//                    .and()
 //                    .csrf().disable()
 //                    .addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
 //                    .authorizeRequests()
@@ -54,7 +47,7 @@ public class MeetYourRoommateApplication {
 //                            "/swagger-ui.html",
 //                            "/webjars/**").permitAll()
 //                    .antMatchers("/api/**").authenticated();
-//        }
-//
-//    }
+            http.httpBasic().disable();
+        }
+    }
 }
