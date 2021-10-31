@@ -16,7 +16,8 @@
     <properties>
         <java.version>16</java.version>
     </properties>
-
+    <packaging>war</packaging>
+    
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
