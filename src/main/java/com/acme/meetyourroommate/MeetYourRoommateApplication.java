@@ -28,24 +28,24 @@ public class MeetYourRoommateApplication {
         return new ModelMapper();
     }
 
-    @EnableWebSecurity
-    @Configuration
-    class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-        @Override
-        protected void configure(HttpSecurity http) throws Exception {
-            http.cors().and()
-                    .csrf().disable()
-                    .addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
-                    .authorizeRequests()
-                    .antMatchers(HttpMethod.POST, "/users/**").permitAll()
-                    .antMatchers("/v2/api-docs",
-                            "/configuration/ui",
-                            "/swagger-resources/**",
-                            "/configuration/security",
-                            "/swagger-ui.html",
-                            "/webjars/**").permitAll()
-                    .antMatchers("/api/**").authenticated();
-        }
-
-    }
+//    @EnableWebSecurity
+//    @Configuration
+//    class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+//        @Override
+//        protected void configure(HttpSecurity http) throws Exception {
+//            http.cors().and()
+//                    .csrf().disable()
+//                    .addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
+//                    .authorizeRequests()
+//                    .antMatchers(HttpMethod.POST, "/users/**").permitAll()
+//                    .antMatchers("/v2/api-docs",
+//                            "/configuration/ui",
+//                            "/swagger-resources/**",
+//                            "/configuration/security",
+//                            "/swagger-ui.html",
+//                            "/webjars/**").permitAll()
+//                    .antMatchers("/api/**").authenticated();
+//        }
+//
+//    }
 }
