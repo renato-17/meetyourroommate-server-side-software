@@ -12,7 +12,7 @@ public interface ReservationRequestService {
 
     ReservationRequest findByTeamIdAndLessorId(Long teamId, Long lessorId);
 
-    ReservationRequest createReservationRequest(Long teamId, Long lessorId, ReservationRequest reservationRequest);
+    ReservationRequest createReservationRequest(Long teamId, Long lessorId);
     ReservationRequest updateReservationRequest(Long teamId, Long lessorId, ReservationRequest reservationRequest);
     ResponseEntity<?> deleteReservationRequest(Long teamId, Long lessorId);
 }

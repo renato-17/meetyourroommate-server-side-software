@@ -9,6 +9,9 @@ public interface StudentService {
     Page<Student> getAllStudents(Pageable pageable);
     Student getStudentById(Long studentId);
     Student getStudentByDni(String studentDni);
+
+    Student joinATeam(Long studentId, Long teamId);
+    Student disjointATeam(Long studentId);
     Student createStudent(Long campusId, Student student);
     Student updateStudent(Student studentRequest, Long studentId);
     ResponseEntity<?> deleteStudent(Long studentId);

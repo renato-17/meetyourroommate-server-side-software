@@ -4,6 +4,7 @@ public class CampusResource {
     private Long id;
     private String name;
     private String address;
+    private Long studyCenterId;
 
     public Long getId() {
         return id;
@@ -27,5 +28,13 @@ public class CampusResource {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public Long getStudyCenterId() {
+        return studyCenterId;
+    }
+
+    public void setStudyCenterId(Long studyCenterId) {
+        this.studyCenterId = studyCenterId;
     }
 }

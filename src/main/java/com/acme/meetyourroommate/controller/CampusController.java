@@ -46,8 +46,9 @@ public class CampusController {
     }
 
     @Operation(summary = "Create Campus", description = "Create a new Campus", tags = {"campuses"})
-    @PostMapping("/study-centers/{studyCenterId}/campuses")
-    public CampusResource createCampus(@Valid @RequestBody SaveCampusResource resource,@PathVariable Long studyCenterId){
+    @PostMapping("/campuses")
+    public CampusResource createCampus(@Valid @RequestBody SaveCampusResource resource,
+                                       @RequestParam("study-center") Long studyCenterId){
         Campus campus = convertToEntity(resource);
         return convertToResource(campusService.createCampus(studyCenterId,campus));
     }

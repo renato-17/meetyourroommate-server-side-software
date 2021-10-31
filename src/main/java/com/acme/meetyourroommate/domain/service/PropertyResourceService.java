@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 
 public interface PropertyResourceService {
     Page<PropertyResource> getAllPropertyResources(Pageable pageable);
-    Page<PropertyResource> getAllPropertyResourcesByPropertyDetailId(Long propertyDetailId, Pageable pageable);
+    Page<PropertyResource> getAllPropertyResourcesByPropertyId(Long propertyId, Pageable pageable);
 
     PropertyResource getPropertyResourceById(Long resourceId);
     PropertyResource createPropertyResource(Long propertyDetailId, PropertyResource propertyResource);

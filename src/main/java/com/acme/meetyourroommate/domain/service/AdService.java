@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 public interface AdService {
     Page<Ad> getAllAds(Pageable pageable);
     Ad getAdById(Long adId);
+
     Ad getAdByPropertyId(Long propertyId);
     Ad getAdByTitle(String title);
 

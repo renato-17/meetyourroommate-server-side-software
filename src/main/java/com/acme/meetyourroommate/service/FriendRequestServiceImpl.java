@@ -12,6 +12,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import javax.validation.constraints.NotNull;
+
 @Service
 public class FriendRequestServiceImpl implements FriendRequestService {
     @Autowired
@@ -50,7 +52,8 @@ public class FriendRequestServiceImpl implements FriendRequestService {
     }
 
     @Override
-    public FriendRequest createFriendRequest(Long studentSendId, Long studentReceivedId, FriendRequest friendRequest) {
+    public FriendRequest createFriendRequest(Long studentSendId, Long studentReceivedId) {
+        FriendRequest friendRequest = new FriendRequest();
         Student studentSend = studentRepository.findById(studentSendId)
                 .orElseThrow(() -> new ResourceNotFoundException("Student", "Id", studentSendId));
         Student studentReceived = studentRepository.findById(studentReceivedId)
@@ -60,7 +63,7 @@ public class FriendRequestServiceImpl implements FriendRequestService {
         friendRequest.setStudentReceived(studentReceived);
         friendRequest.setStatus(3);
         friendRequest.setStatusDescription(setDescriptionStatus(3));
-
+        friendRequest.setType(true);
         return friendRequestRepository.save(friendRequest);
     }
 
@@ -77,6 +80,14 @@ public class FriendRequestServiceImpl implements FriendRequestService {
         FriendRequest friendRequest = findByStudentSendIdAndStudentReceivedId(studentSendId, studentReceivedId);
         friendRequestRepository.delete(friendRequest);
         return ResponseEntity.ok().build();
+    }
+
+    @Override
+    public FriendRequest responseFriendRequest(Long studentSendId, Long studentReceivedId, Integer status) {
+        FriendRequest friendRequest = findByStudentSendIdAndStudentReceivedId(studentSendId, studentReceivedId);
+        friendRequest.setStatus(status);
+        friendRequest.setStatusDescription(setDescriptionStatus(friendRequest.getStatus()));
+        return friendRequestRepository.save(friendRequest);
     }
 
     private String setDescriptionStatus(Integer status){

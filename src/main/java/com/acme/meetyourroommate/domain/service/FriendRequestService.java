@@ -12,8 +12,9 @@ public interface FriendRequestService {
     Page<FriendRequest> findAllFriendRequests(Pageable pageable);
     FriendRequest findByStudentSendIdAndStudentReceivedId(Long studentSendId, Long studentReceivedId);
 
-    FriendRequest createFriendRequest(Long studentSendId, Long studentReceivedId, FriendRequest friendRequest);
+    FriendRequest createFriendRequest(Long studentSendId, Long studentReceivedId);
     FriendRequest updateFriendRequest(Long studentSendId, Long studentReceivedId, FriendRequest newFriendRequest);
     ResponseEntity<?> deleteFriendRequest(Long studentSendId, Long studentReceivedId);
 
+    FriendRequest responseFriendRequest(Long studentSendId, Long studentReceivedId, Integer status);
 }

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 @DiscriminatorValue("student")
@@ -23,7 +24,7 @@ public class Student extends Person{
     @NotNull
     private Boolean searching;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "campus_id")
     @JsonIgnore
     private Campus campus;
@@ -32,6 +33,12 @@ public class Student extends Person{
     @JoinColumn(name = "team_id")
     @JsonIgnore
     private Team team;
+
+    @OneToMany(mappedBy = "studentSend", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<FriendRequest> sendFriendRequests;
+
+    @OneToMany(mappedBy = "studentReceived", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<FriendRequest> receivedFriendRequests;
 
     public String getDescription() {
         return description;
@@ -79,5 +86,21 @@ public class Student extends Person{
 
     public void setTeam(Team team) {
         this.team = team;
+    }
+
+    public List<FriendRequest> getSendFriendRequests() {
+        return sendFriendRequests;
+    }
+
+    public void setSendFriendRequests(List<FriendRequest> sendFriendRequests) {
+        this.sendFriendRequests = sendFriendRequests;
+    }
+
+    public List<FriendRequest> getReceivedFriendRequests() {
+        return receivedFriendRequests;
+    }
+
+    public void setReceivedFriendRequests(List<FriendRequest> receivedFriendRequests) {
+        this.receivedFriendRequests = receivedFriendRequests;
     }
 }

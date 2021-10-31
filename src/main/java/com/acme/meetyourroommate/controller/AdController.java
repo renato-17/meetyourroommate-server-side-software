@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,11 +46,26 @@ public class AdController {
         return convertToResource(adService.getAdById(adId));
     }
 
+
+//    @Operation(summary = "Get Ad by title", description = "Get Ad by title", tags = {"ads"})
+//    @GetMapping("/ads/{title}")
+//    public AdResource getAdByTitle(@PathVariable String title){
+//        return convertToResource(adService.getAdByTitle(title));
+//    }
+
+    @Operation(summary = "Get Ad by PropertyId", description = "Get Ad by PropertyId", tags = {"ads"})
+    @GetMapping("/property/{propertyId}/ad")
+    public AdResource getAdByPropertyId(@PathVariable Long propertyId){
+        return convertToResource(adService.getAdByPropertyId(propertyId));
+    }
+
+
     @Operation(summary = "Create Ad", description = "Create a new Ad", tags = {"ads"})
     @PostMapping("/ads")
-    public AdResource createAd(@Valid @RequestBody SaveAdResource resource){
+    public AdResource createAd(@Valid @RequestBody SaveAdResource resource,
+                               @RequestParam("property") Long propertyId){
         Ad ad = convertToEntity(resource);
-        return convertToResource(adService.createAd(resource.getPropertyId(),ad));
+        return convertToResource(adService.createAd(propertyId,ad));
     }
 
     @Operation(summary = "Update Ad", description = "Update Ad", tags = {"ads"})

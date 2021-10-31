@@ -39,9 +39,9 @@ public class ReservationRequestController {
 
     @Operation(summary = "Create Reservation", description = "Create an reservation", tags = {"reservation"})
     @PostMapping("/reservations")
-    public ReservationRequestResource createReservation(@Valid @RequestBody SaveReservationRequestResource resource){
-        ReservationRequest reservationRequest = convertToEntity(resource);
-        return convertToResource(reservationRequestService.createReservationRequest(resource.getTeamId(), resource.getLessorId(), reservationRequest));
+    public ReservationRequestResource createReservation(@RequestParam("team") Long teamId,
+                                                        @RequestParam("lessor") Long lessorId){
+        return convertToResource(reservationRequestService.createReservationRequest(teamId,lessorId));
     }
 
     @Operation(summary = "Get Reservation by TeamId And LessorId", description = "Get an Reservation by TeamId and LessorId", tags = {"reservation"})

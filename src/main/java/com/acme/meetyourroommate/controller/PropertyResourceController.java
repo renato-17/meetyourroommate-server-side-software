@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.websocket.server.PathParam;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -38,6 +39,20 @@ public class PropertyResourceController {
         return new PageImpl<>(resources,pageable, resources.size());
     }
 
+    @Operation(summary = "Get All PropertyResources by PropertyId", description = "Get all propertyResources by PropertyId", tags = {"property resources"})
+    @GetMapping("property/{propertyId}/property-resources")
+    public Page<PropertyResourceResource> getAllPropertyResourcesByPropertyId(Pageable pageable,
+                                                                  @PathVariable Long propertyId){
+        Page<PropertyResource> propertyResourcePage = propertyResourceService.getAllPropertyResourcesByPropertyId(propertyId,pageable);
+
+        List<PropertyResourceResource> resources = propertyResourcePage.getContent()
+                .stream()
+                .map(this::convertToResource)
+                .collect(Collectors.toList());
+
+        return new PageImpl<>(resources,pageable, resources.size());
+    }
+
     @Operation(summary = "Get PropertyResource By Id", description = "Get PropertyResource By Id", tags = {"property resources"})
     @GetMapping("/property-resources/{propertyResourceId}")
     public PropertyResourceResource getPropertyResourceById(@PathVariable Long propertyResourceId){
@@ -45,8 +60,9 @@ public class PropertyResourceController {
     }
 
     @Operation(summary = "Create PropertyResource", description = "Create a new PropertyResource", tags = {"property resources"})
-    @PostMapping("property-details/{propertyDetailId}/property-resources")
-    public PropertyResourceResource createPropertyResource(@Valid @RequestBody SavePropertyResourceResource resource, @PathVariable Long propertyDetailId){
+    @PostMapping("/property-resources")
+    public PropertyResourceResource createPropertyResource(@Valid @RequestBody SavePropertyResourceResource resource,
+                                                           @RequestParam("propertyDetail") Long propertyDetailId){
         PropertyResource propertyResource = convertToEntity(resource);
         return convertToResource(propertyResourceService.createPropertyResource(propertyDetailId,propertyResource));
     }

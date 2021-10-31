@@ -27,7 +27,7 @@ public class StudyCenterController {
     private StudyCenterService studyCenterService;
 
     @Operation(summary = "Get All StudyCenters", description = "Get all study centers", tags = {"study centers"})
-    @GetMapping("/studyCenters")
+    @GetMapping("/study-centers")
     public Page<StudyCenterResource> getAllStudyCenters(Pageable pageable){
         Page<StudyCenter> studyCenterPage = studyCenterService.getAllStudyCenters(pageable);
 
@@ -40,20 +40,20 @@ public class StudyCenterController {
     }
 
     @Operation(summary = "Get StudyCenter By Id", description = "Get StudyCenter By Id", tags = {"study centers"})
-    @GetMapping("/studyCenters/{studyCenterId}")
+    @GetMapping("/study-centers/{studyCenterId}")
     public StudyCenterResource getStudyCenterById(@PathVariable Long studyCenterId){
         return convertToResource(studyCenterService.getStudyCenterById(studyCenterId));
     }
 
     @Operation(summary = "Create StudyCenter", description = "Create a new studyCenter", tags = {"study centers"})
-    @PostMapping("/studyCenters")
+    @PostMapping("/study-centers")
     public StudyCenterResource createStudyCenter(@Valid @RequestBody SaveStudyCenterResource resource){
         StudyCenter studyCenter = convertToEntity(resource);
         return convertToResource(studyCenterService.createStudyCenter(studyCenter));
     }
 
     @Operation(summary = "Update StudyCenter", description = "Update a studyCenter", tags = {"study centers"})
-    @PutMapping("/studyCenters/{studyCenterId}")
+    @PutMapping("/study-centers/{studyCenterId}")
     public StudyCenterResource updateStudyCenter(
             @PathVariable Long studyCenterId,
             @RequestBody @Valid SaveStudyCenterResource resource){
@@ -62,7 +62,7 @@ public class StudyCenterController {
     }
 
     @Operation(summary = "Delete a studyCenter", description = "Delete a studyCenter", tags = {"study centers"})
-    @DeleteMapping("/studyCenters/{studyCenterId}")
+    @DeleteMapping("/study-centers/{studyCenterId}")
     public ResponseEntity<?> deleteStudyCenter(@PathVariable Long studyCenterId){
         return studyCenterService.deleteStudyCenter(studyCenterId);
     }

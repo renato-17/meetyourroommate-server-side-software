@@ -48,7 +48,7 @@ public class TaskServiceImpl implements TaskService {
                 .orElseThrow(()->new ResourceNotFoundException("Team","Id",teamId));
 
         task.setTeam(team);
-        task.setActive(false);
+        task.setActive(true);
         return taskRepository.save(task);
     }
 
@@ -56,7 +56,7 @@ public class TaskServiceImpl implements TaskService {
     public Task updateTask(Long taskId, Task taskRequest) {
         Task task = taskRepository.findById(taskId)
                 .orElseThrow(() -> new ResourceNotFoundException("Task","Id",taskId));
-        task.setActive(taskRequest.getActive());
+
         task.setDescription(taskRequest.getDescription());
         return taskRepository.save(task);
     }

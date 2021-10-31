@@ -44,6 +44,11 @@ public class StudentController {
     public StudentResource getStudentById(@PathVariable Long studentId){
         return convertToResource(studentService.getStudentById(studentId));
     }
+//    @Operation(summary = "Get Student By Dni", description = "Get Student By Dni", tags = {"students"})
+//    @GetMapping("/students/{studentDni}")
+//    public StudentResource getStudentByDni(@PathVariable String studentDni){
+//        return convertToResource(studentService.getStudentByDni(studentDni));
+//    }
 
     @Operation(summary = "Update Student", description = "Update Student", tags = {"students"})
     @PutMapping("/students/{studentId}")
@@ -52,6 +57,21 @@ public class StudentController {
             @RequestBody @Valid SaveStudentResource resource){
         Student student = convertToEntity(resource);
         return convertToResource(studentService.updateStudent(student,studentId));
+    }
+
+    @Operation(summary = "Join a Team", description = "Join a Team", tags = {"students"})
+    @PatchMapping("team/{teamId}/students/{studentId}")
+    public StudentResource joinATeam(
+            @PathVariable Long studentId,
+            @PathVariable Long teamId){
+        return convertToResource(studentService.joinATeam(studentId,teamId));
+    }
+
+    @Operation(summary = "Disjoint a Team", description = "Disjoint a Team", tags = {"students"})
+    @PatchMapping("/students/{studentId}")
+    public StudentResource disjointATeam(
+            @PathVariable Long studentId){
+        return convertToResource(studentService.disjointATeam(studentId));
     }
 
     @Operation(summary = "Delete Student", description = "Delete Student", tags = {"students"})

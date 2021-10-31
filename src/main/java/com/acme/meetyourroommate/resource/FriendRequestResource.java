@@ -1,24 +1,40 @@
 package com.acme.meetyourroommate.resource;
 
 public class FriendRequestResource {
-    private StudentResource studentSend;
-    private StudentResource studentReceived;
+    private Long studentSendId;
+    private Long studentReceivedId;
     private Integer status;
     private String statusDescription;
 
-    public StudentResource getStudentSend() {
-        return studentSend;
+    public Long getStudentSendId() {
+        return studentSendId;
     }
 
-    public void setStudentSend(StudentResource studentSend) {
-        this.studentSend = studentSend;
+    public void setStudentSendId(Long studentSendId) {
+        this.studentSendId = studentSendId;
     }
 
-    public StudentResource getStudentReceived() {
-        return studentReceived;
+    public Long getStudentReceivedId() {
+        return studentReceivedId;
     }
 
-    public void setStudentReceived(StudentResource studentReceived) {
-        this.studentReceived = studentReceived;
+    public void setStudentReceivedId(Long studentReceivedId) {
+        this.studentReceivedId = studentReceivedId;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public String getStatusDescription() {
+        return statusDescription;
+    }
+
+    public void setStatusDescription(String statusDescription) {
+        this.statusDescription = statusDescription;
     }
 }

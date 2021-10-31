@@ -45,8 +45,9 @@ public class PropertyController {
     }
 
     @Operation(summary = "Create Property", description = "Create a new Property", tags = {"properties"})
-    @PostMapping("lessors/{lessorId}/properties")
-    public PropertyResource createProperty(@Valid @RequestBody SavePropertyResource resource, @PathVariable Long lessorId){
+    @PostMapping("/properties")
+    public PropertyResource createProperty(@Valid @RequestBody SavePropertyResource resource,
+                                           @RequestParam("lessor") Long lessorId){
         Property property = convertToEntity(resource);
         return convertToResource(propertyService.createProperty(lessorId,property));
     }

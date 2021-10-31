@@ -10,9 +10,6 @@ public class SaveAdResource {
     @Size(max = 100)
     private String title;
 
-    @NotNull
-    private Long propertyId;
-
     public String getTitle() {
         return title;
     }
@@ -21,11 +18,4 @@ public class SaveAdResource {
         this.title = title;
     }
 
-    public Long getPropertyId() {
-        return propertyId;
-    }
-
-    public void setPropertyId(Long propertyId) {
-        this.propertyId = propertyId;
-    }
 }

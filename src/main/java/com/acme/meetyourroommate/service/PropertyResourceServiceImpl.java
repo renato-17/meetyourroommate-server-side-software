@@ -1,5 +1,6 @@
 package com.acme.meetyourroommate.service;
 
+import com.acme.meetyourroommate.domain.model.PropertyDetail;
 import com.acme.meetyourroommate.domain.model.PropertyResource;
 import com.acme.meetyourroommate.domain.repository.PropertyDetailRepository;
 import com.acme.meetyourroommate.domain.repository.PropertyResourceRepository;
@@ -24,8 +25,10 @@ public class PropertyResourceServiceImpl implements PropertyResourceService {
     }
 
     @Override
-    public Page<PropertyResource> getAllPropertyResourcesByPropertyDetailId(Long propertyDetailId, Pageable pageable) {
-        return propertyResourceRepository.findByPropertyDetailId(propertyDetailId,pageable);
+    public Page<PropertyResource> getAllPropertyResourcesByPropertyId(Long propertyId, Pageable pageable) {
+        PropertyDetail propertyDetail = propertyDetailRepository.findByPropertyId(propertyId)
+                .orElseThrow(() -> new ResourceNotFoundException("Property Detail", "PropertyId", propertyId));
+        return propertyResourceRepository.findByPropertyDetailId(propertyDetail.getId(),pageable);
     }
 
     @Override

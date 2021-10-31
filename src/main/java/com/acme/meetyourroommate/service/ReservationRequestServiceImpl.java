@@ -49,7 +49,8 @@ public class ReservationRequestServiceImpl implements ReservationRequestService 
     }
 
     @Override
-    public ReservationRequest createReservationRequest(Long teamId, Long lessorId, ReservationRequest reservationRequest) {
+    public ReservationRequest createReservationRequest(Long teamId, Long lessorId) {
+        ReservationRequest reservationRequest = new ReservationRequest();
         Team team = teamRepository.findById(teamId)
                 .orElseThrow(() -> new ResourceNotFoundException("Team", "Id", teamId));
         Lessor lessor = lessorRepository.findById(lessorId)

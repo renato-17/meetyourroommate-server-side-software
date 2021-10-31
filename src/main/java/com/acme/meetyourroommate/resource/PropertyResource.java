@@ -4,6 +4,7 @@ public class PropertyResource {
     private Long id;
     private String address;
     private String description;
+    private Long lessorId;
 
     public Long getId() {
         return id;
@@ -27,5 +28,13 @@ public class PropertyResource {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Long getLessorId() {
+        return lessorId;
+    }
+
+    public void setLessorId(Long lessorId) {
+        this.lessorId = lessorId;
     }
 }

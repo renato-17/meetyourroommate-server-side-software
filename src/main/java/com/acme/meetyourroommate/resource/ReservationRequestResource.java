@@ -1,55 +1,40 @@
 package com.acme.meetyourroommate.resource;
 
 public class ReservationRequestResource {
-    private Long id;
-    private TeamResource team;
-    private LessorResource lessor;
+    private Long teamId;
+    private Long lessorId;
     private Integer status;
     private String statusDescription;
 
-
-    public Long getId() {
-        return id;
+    public Long getTeamId() {
+        return teamId;
     }
 
-    public ReservationRequestResource setId(Long id) {
-        this.id = id;
-        return this;
+    public void setTeamId(Long teamId) {
+        this.teamId = teamId;
     }
 
-    public TeamResource getTeam() {
-        return team;
+    public Long getLessorId() {
+        return lessorId;
     }
 
-    public ReservationRequestResource setTeam(TeamResource team) {
-        this.team = team;
-        return this;
-    }
-
-    public LessorResource getLessor() {
-        return lessor;
-    }
-
-    public ReservationRequestResource setLessor(LessorResource lessor) {
-        this.lessor = lessor;
-        return this;
+    public void setLessorId(Long lessorId) {
+        this.lessorId = lessorId;
     }
 
     public Integer getStatus() {
         return status;
     }
 
-    public ReservationRequestResource setStatus(Integer status) {
+    public void setStatus(Integer status) {
         this.status = status;
-        return this;
     }
 
     public String getStatusDescription() {
         return statusDescription;
     }
 
-    public ReservationRequestResource setStatusDescription(String statusDescription) {
+    public void setStatusDescription(String statusDescription) {
         this.statusDescription = statusDescription;
-        return this;
     }
 }

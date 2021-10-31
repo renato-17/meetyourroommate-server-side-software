@@ -19,7 +19,7 @@ public class StudentResource {
     private String hobbies;
     private Boolean smoker;
     private Boolean searching;
-
+    private CampusResource campus;
 
     public String getMail() {
         return mail;
@@ -147,5 +147,13 @@ public class StudentResource {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public CampusResource getCampus() {
+        return campus;
+    }
+
+    public void setCampus(CampusResource campus) {
+        this.campus = campus;
     }
 }
