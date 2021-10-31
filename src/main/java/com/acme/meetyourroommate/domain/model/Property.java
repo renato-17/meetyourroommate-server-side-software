@@ -19,7 +19,7 @@ public class Property {
     @Lob
     private String description;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL,optional = false)
     @JoinColumn(name = "lessor_id", nullable = false)
     private Lessor lessor;
 
