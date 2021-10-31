@@ -17,8 +17,8 @@ public class PropertyResource extends AuditModel{
     @Lob
     private String link;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "property_detail_id",nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
+    @JoinColumn(name = "property_details_id",nullable = false)
     private PropertyDetail propertyDetail;
 
     public Long getId() {
