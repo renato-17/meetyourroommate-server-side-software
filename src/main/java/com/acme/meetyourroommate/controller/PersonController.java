@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/api")
 public class PersonController {
     @Autowired
     private ModelMapper mapper;
@@ -30,9 +30,9 @@ public class PersonController {
     private LessorService lessorService;
 
     @Operation(summary = "User Authentication", description = "Authenticate user using credentials", tags = {"users"})
-    @PostMapping("/authentication")
-    public AuthResource authenticate(@RequestParam("m") String mail,
-                                     @RequestParam("p") String password) {
+    @PostMapping("/users")
+    public AuthResource authenticate(@RequestParam("mail") String mail,
+                                     @RequestParam("pwd") String password) {
         return personService.authentication(mail, password);
     }
 
