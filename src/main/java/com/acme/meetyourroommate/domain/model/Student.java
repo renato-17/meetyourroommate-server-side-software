@@ -24,7 +24,7 @@ public class Student extends Person{
     @NotNull
     private Boolean searching;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "campus_id")
     @JsonIgnore
     private Campus campus;
