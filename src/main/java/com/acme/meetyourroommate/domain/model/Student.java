@@ -25,7 +25,7 @@ public class Student extends Person{
     private Boolean searching;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "campus_id")
+    @JoinColumn(name = "campus_id", nullable = false)
     @JsonIgnore
     private Campus campus;
 
