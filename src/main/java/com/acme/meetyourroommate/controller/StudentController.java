@@ -44,11 +44,15 @@ public class StudentController {
     public StudentResource getStudentById(@PathVariable Long studentId){
         return convertToResource(studentService.getStudentById(studentId));
     }
-//    @Operation(summary = "Get Student By Dni", description = "Get Student By Dni", tags = {"students"})
-//    @GetMapping("/students/{studentDni}")
-//    public StudentResource getStudentByDni(@PathVariable String studentDni){
-//        return convertToResource(studentService.getStudentByDni(studentDni));
-//    }
+
+    @Operation(summary = "Create Student", description = "Create a new Student", tags = {"students"})
+    @PostMapping("/students")
+    public StudentResource createStudent(@Valid @RequestBody SaveStudentResource resource,
+                                         @RequestParam("campus") Long campusId) {
+        Student student = convertToEntity(resource);
+        return convertToResource(studentService.createStudent(campusId, student));
+    }
+
 
     @Operation(summary = "Update Student", description = "Update Student", tags = {"students"})
     @PutMapping("/students/{studentId}")

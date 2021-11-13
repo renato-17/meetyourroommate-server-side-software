@@ -3,12 +3,10 @@ package com.acme.meetyourroommate.resource;
 public class AuthResource {
     private Long id;
     private String discriminator;
-    private String token;
 
-    public AuthResource(Long id, String discriminator, String token) {
+    public AuthResource(Long id, String discriminator) {
         this.id = id;
         this.discriminator = discriminator;
-        this.token = token;
     }
 
     public Long getId() {
@@ -27,11 +25,4 @@ public class AuthResource {
         this.discriminator = discriminator;
     }
 
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
 }

@@ -36,18 +36,4 @@ public class PersonController {
         return personService.authentication(mail, password);
     }
 
-    @Operation(summary = "Create Student", description = "Create a new Student", tags = {"users"})
-    @PostMapping("/students")
-    public StudentResource createStudent(@Valid @RequestBody SaveStudentResource resource,
-                                         @RequestParam("campus") Long campusId) {
-        Student student = mapper.map(resource, Student.class);
-        return mapper.map(studentService.createStudent(campusId, student), StudentResource.class);
-    }
-
-    @Operation(summary = "Create Lessor", description = "Create a new lessor", tags = {"users"})
-    @PostMapping("/lessors")
-    public LessorResource createLessor(@Valid @RequestBody SaveLessorResource resource){
-        Lessor lessor = mapper.map(resource, Lessor.class);
-        return mapper.map(lessorService.createLessor(lessor),LessorResource.class);
-    }
 }

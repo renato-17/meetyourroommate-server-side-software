@@ -47,7 +47,12 @@ public class LessorController {
         return convertToResource(lessorService.getLessorById(lessorId));
     }
 
-
+    @Operation(summary = "Create Lessor", description = "Create a new lessor", tags = {"lessors"})
+    @PostMapping("/lessors")
+    public LessorResource createLessor(@Valid @RequestBody SaveLessorResource resource){
+        Lessor lessor = convertToEntity(resource);
+        return convertToResource(lessorService.createLessor(lessor));
+    }
 
     @Operation(summary = "Update Lessor", description = "Update a lessor", tags = {"lessors"})
     @PutMapping("/lessors/{lessorId}")
